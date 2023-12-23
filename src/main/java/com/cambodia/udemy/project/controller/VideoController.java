@@ -16,6 +16,6 @@ public class VideoController {
     @PostMapping("/video/create")
     public ResponseEntity<?> testAddVideo(@RequestBody Video video){
         videoServices.testCreateVideo(video);
-        return ResponseEntity.ok("");
+        return ResponseEntity.ok("success create video");
     }
 }

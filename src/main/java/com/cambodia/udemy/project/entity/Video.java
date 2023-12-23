@@ -17,6 +17,7 @@ public class Video {
     private String description;
     @Column(name = "v_video_link")
     private String videoLink;
+    /* This feature need change this field*/
 /*    @Lob
     @Column(name = "V_IMAGE")
     private byte[] imageCover;*/
