@@ -17,9 +17,9 @@ public class Video {
     private String description;
     @Column(name = "v_video_link")
     private String videoLink;
-    @Lob
+/*    @Lob
     @Column(name = "V_IMAGE")
-    private byte[] imageCover;
+    private byte[] imageCover;*/
     @Column(name = "V_DATE_CREATED")
     private Timestamp dateCreated;
     @Column(name = "V_DATE_MODIFIED")
@@ -32,6 +32,6 @@ public class Video {
     private Long userId;
 
     @ManyToOne
-    @JoinColumn(name = "V_TITLE")
+    @JoinColumn(name = "V_COURSE_ID")
     private Courses courses;
 }
