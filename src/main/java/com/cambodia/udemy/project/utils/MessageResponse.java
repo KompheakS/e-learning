@@ -4,8 +4,10 @@ import lombok.Data;
 
 @Data
 public class MessageResponse {
+    /*am,  using value, */
     public static final String MESSAGE_SUCCESS = "success";
     public static final String MESSAGE_FAIL = "fail";
+    public static final String MESSAGE_NULL = "null";
 
     public static String categoryReturnCreated(){
         return "New Category Was Created!";

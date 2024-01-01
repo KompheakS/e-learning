@@ -2,6 +2,7 @@ package com.cambodia.udemy.project.controller;
 
 import com.cambodia.udemy.project.dto.ApiResponse;
 import com.cambodia.udemy.project.dto.request.CategoryRequest;
+import com.cambodia.udemy.project.exception.CustomBadRequestException;
 import com.cambodia.udemy.project.service.CategoryServices;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ public class CategoryController {
     @PostMapping("/create")
     public ResponseEntity<ApiResponse<String>> createNewCategory(@RequestBody CategoryRequest categoryRequest){
         ApiResponse<String> response = categoryServices.createNewCategory(categoryRequest);
+        if (!response.getMessage().equals("success")){
+            throw new CustomBadRequestException("cannot create new category!");
+        }
         return ResponseEntity.ok(response);
     }
 }
