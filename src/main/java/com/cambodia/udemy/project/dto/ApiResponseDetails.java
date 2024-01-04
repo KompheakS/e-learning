@@ -14,7 +14,7 @@ import java.util.List;
 public class ApiResponseDetails<T>{
     private int status;
     private String message;
-    private List<T> data;
+    private T data;
 
     public void setStatus(int status) {
         if (status == 0){

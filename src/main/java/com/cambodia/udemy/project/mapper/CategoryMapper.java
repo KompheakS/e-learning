@@ -22,7 +22,7 @@ public class CategoryMapper {
     public CategoryDto mapToCategoryDto(Category category){
         CategoryDto categoryDto = new CategoryDto();
 
-        categoryDto.setCategoryName(categoryDto.getCategoryName());
+        categoryDto.setCategoryName(category.getCategoryName());
         return categoryDto;
     }
 }

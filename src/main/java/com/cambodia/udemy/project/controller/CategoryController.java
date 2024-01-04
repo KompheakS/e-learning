@@ -1,15 +1,15 @@
 package com.cambodia.udemy.project.controller;
 
 import com.cambodia.udemy.project.dto.ApiResponse;
+import com.cambodia.udemy.project.dto.ApiResponseDetails;
+import com.cambodia.udemy.project.dto.CategoryDto;
 import com.cambodia.udemy.project.dto.request.CategoryRequest;
-import com.cambodia.udemy.project.exception.CustomBadRequestException;
 import com.cambodia.udemy.project.service.CategoryServices;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -21,9 +21,12 @@ public class CategoryController {
     @PostMapping("/create")
     public ResponseEntity<ApiResponse<String>> createNewCategory(@RequestBody CategoryRequest categoryRequest){
         ApiResponse<String> response = categoryServices.createNewCategory(categoryRequest);
-        if (!response.getMessage().equals("success")){
-            throw new CustomBadRequestException("cannot create new category!");
-        }
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/gets")
+    public ResponseEntity<?> getAllCategory(){
+        ApiResponseDetails<List<CategoryDto>> responseDetails = categoryServices.getAllCategory();
+        return ResponseEntity.ok(responseDetails);
     }
 }
