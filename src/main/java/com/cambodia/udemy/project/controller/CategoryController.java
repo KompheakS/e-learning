@@ -29,4 +29,8 @@ public class CategoryController {
         ApiResponseDetails<List<CategoryDto>> responseDetails = categoryServices.getAllCategory();
         return ResponseEntity.ok(responseDetails);
     }
+
+    public ResponseEntity<?> deleteCategory(Long id){
+        return null;
+    }
 }
