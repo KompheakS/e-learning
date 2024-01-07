@@ -31,7 +31,6 @@ public class CategoryServicesImp implements CategoryServices {
             throw new CustomBadRequestException("cannot create new category");
         }else {
             categoryRepository.save(category);
-            /* set response and return back to client */
             return new ApiResponse<>(StatusCode.STATUS_CREATED, MessageResponse.MESSAGE_SUCCESS, MessageResponse.categoryReturnCreated());
         }
     }
