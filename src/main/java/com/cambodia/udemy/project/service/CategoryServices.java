@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CategoryServices {
     ApiResponse<String> createNewCategory(CategoryRequest request);
-
     ApiResponseDetails<List<CategoryDto>> getAllCategory();
+    ApiResponse<String> deleteCategoryById(Long id);
 }

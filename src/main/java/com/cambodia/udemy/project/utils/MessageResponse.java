@@ -11,4 +11,8 @@ public class MessageResponse {
     public static String categoryReturnCreated(){
         return "New Category Was Created!";
     }
+
+    public static String categoryReturnDelete(){
+        return "delete category successfully!";
+    }
 }

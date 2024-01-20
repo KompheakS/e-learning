@@ -25,7 +25,7 @@ class UdemyProjectApplicationTests {
 	void testCreateNewCategory(){
 		// given
 		Category category = new Category();
-		category.setCategoryName("Test Category 2");
+		category.setCategoryName("Test Category 4");
 		// when
 		Category result = categoryRepository.save(category);
 		// then

@@ -48,4 +48,15 @@ public class CategoryServicesImp implements CategoryServices {
 
         return apiResponseDetails;
     }
+
+    @Override
+    public ApiResponse<String> deleteCategoryById(Long id) {
+        Optional<Category> category = categoryRepository.findById(id);
+        if (category.isPresent()){
+            categoryRepository.deleteById(id);
+            return new ApiResponse<>(StatusCode.STATUS_CREATED, MessageResponse.MESSAGE_SUCCESS, MessageResponse.categoryReturnDelete());
+        }else {
+            throw new CustomBadRequestException("cannot delete this category!");
+        }
+    }
 }
