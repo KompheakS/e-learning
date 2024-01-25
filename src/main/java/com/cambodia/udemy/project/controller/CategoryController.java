@@ -1,8 +1,6 @@
 package com.cambodia.udemy.project.controller;
 
-import com.cambodia.udemy.project.dto.ApiResponse;
-import com.cambodia.udemy.project.dto.ApiResponseDetails;
-import com.cambodia.udemy.project.dto.CategoryDto;
+import com.cambodia.udemy.project.dto.response.ApiResponse;
 import com.cambodia.udemy.project.dto.request.CategoryRequest;
 import com.cambodia.udemy.project.service.CategoryServices;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.cambodia.udemy.project.mapper;
 
-import com.cambodia.udemy.project.dto.CategoryDto;
+import com.cambodia.udemy.project.dto.response.CategoryDto;
 import com.cambodia.udemy.project.dto.request.CategoryRequest;
 import com.cambodia.udemy.project.entity.Category;
 import org.mapstruct.Mapper;

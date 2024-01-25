@@ -1,9 +1,10 @@
 package com.cambodia.udemy.project.service.imp;
 
-import com.cambodia.udemy.project.dto.ApiResponse;
-import com.cambodia.udemy.project.dto.ApiResponseDetails;
-import com.cambodia.udemy.project.dto.CategoryDto;
+import com.cambodia.udemy.project.dto.response.ApiResponse;
+import com.cambodia.udemy.project.dto.response.ApiResponseDetails;
+import com.cambodia.udemy.project.dto.response.CategoryDto;
 import com.cambodia.udemy.project.dto.request.CategoryRequest;
+import com.cambodia.udemy.project.dto.response.ErrorResponseMessage;
 import com.cambodia.udemy.project.entity.Category;
 import com.cambodia.udemy.project.exception.CustomBadRequestException;
 import com.cambodia.udemy.project.mapper.CategoryMapping;
@@ -30,7 +31,7 @@ public class CategoryServicesImp implements CategoryServices {
         Category category = categoryMapping.mapToCategory(request);
         Optional<?> getCategory = categoryRepository.findCategoryByCategoryName(request.getCategoryName());
         if (getCategory.isPresent()){
-            throw new CustomBadRequestException("cannot create new category");
+            throw new CustomBadRequestException(ErrorResponseMessage.errorCategoryCreate);
         }else {
             categoryRepository.save(category);
             return new ApiResponse<>(StatusCode.STATUS_CREATED, MessageResponse.MESSAGE_SUCCESS, MessageResponse.categoryReturnCreated());
@@ -58,7 +59,7 @@ public class CategoryServicesImp implements CategoryServices {
             categoryRepository.deleteById(id);
             return new ApiResponse<>(StatusCode.STATUS_CREATED, MessageResponse.MESSAGE_SUCCESS, MessageResponse.categoryReturnDelete());
         }else {
-            throw new CustomBadRequestException("cannot delete this category!");
+            throw new CustomBadRequestException(ErrorResponseMessage.errorCategoryDelete);
         }
     }
 }
