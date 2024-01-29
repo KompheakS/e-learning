@@ -20,7 +20,6 @@ public class CategoryController {
 
     @PostMapping("/create")
     public ResponseEntity<ApiResponse<String>> createNewCategory(@RequestBody CategoryRequest categoryRequest){
-        log.info("new category was created {}", categoryRequest);
         return new ResponseEntity<>(categoryServices.createNewCategory(categoryRequest), HttpStatus.CREATED);
     }
 
@@ -32,7 +31,6 @@ public class CategoryController {
 
     @PostMapping("{id}/delete")
     public ResponseEntity<?> deleteCategory(@PathVariable("id") Long id){
-        log.info("category with id: {}", id);
         return new ResponseEntity<>(categoryServices.deleteCategoryById(id), HttpStatus.OK);
     }
 }

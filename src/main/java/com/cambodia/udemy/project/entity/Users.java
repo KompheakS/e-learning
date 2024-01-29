@@ -29,14 +29,14 @@ public class Users {
     @Email
     private String email;
     @Column(name = "U_PHONE_NUMBER")
-    private Long phoneNumber;
+    private int phoneNumber;
     @Column(name = "U_DATE_OF_BIRTH", columnDefinition = "DATE")
     private LocalDate dateOfBirth;
     @Column(name = "U_GENDER")
     private String gender;
-    @Lob
+    /*@Lob
     @Column(name = "U_PHOTO")
-    private byte[] photo;
+    private byte[] photo;*/
     @Column(name = "U_JOIN_DATE")
     private Timestamp joinDate;
 }

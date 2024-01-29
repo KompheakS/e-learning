@@ -7,6 +7,7 @@ public class MessageResponse {
     public static final String MESSAGE_SUCCESS = "success";
     public static final String MESSAGE_FAIL = "fail";
     public static final String MESSAGE_NULL = "null";
+    public static final String SUCCESS_CREATED_USER = "success created new user";
 
     public static String categoryReturnCreated(){
         return "New Category Was Created!";
