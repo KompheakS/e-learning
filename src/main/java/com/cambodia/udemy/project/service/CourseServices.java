@@ -5,4 +5,5 @@ import com.cambodia.udemy.project.dto.response.ApiResponse;
 
 public interface CourseServices {
     ApiResponse<String> createCourse(CourseRequest courseRequest);
+    ApiResponse<?> viewAllCourse();
 }

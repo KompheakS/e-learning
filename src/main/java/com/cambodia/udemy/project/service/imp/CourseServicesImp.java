@@ -18,6 +18,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,15 +36,23 @@ public class CourseServicesImp implements CourseServices {
         Optional<Users> getUserFromDb = userRepository.findById(courseRequest.getIdUsers());
         Optional<Category> getCategoryFromDb = categoryRepository.findById(courseRequest.getCategoryId());
 
-        if (getCategoryFromDb.isEmpty() && getUserFromDb.isEmpty()){
+        if (getCategoryFromDb.isEmpty() || getUserFromDb.isEmpty()){
             log.warn("cannot create course with name {}", courseRequest.getCourseName());
             throw new CustomBadRequestException("this user or category doesn't exist!");
         }
         Courses course = courseMapper.mapToCourse(courseRequest);
-        course.setCourseName(getCategoryFromDb.get().getCategoryName());
+        course.setCourseName(courseRequest.getCourseName());
+        course.setCategory(getCategoryFromDb.get());
         course.setUserId(getUserFromDb.get());
         courseRepository.save(course);
         log.info("new course has been created with name {}", course.getCourseName());
         return new ApiResponse<>(HttpStatus.CREATED.value(), MessageResponse.MESSAGE_SUCCESS, MessageResponse.MESSAGE_SUCCESS);
+    }
+
+    @Override
+    public ApiResponse<?> viewAllCourse(){
+        List<Courses> courses = courseRepository.findAll();
+        log.info("get all course success!");
+        return new ApiResponse<>(HttpStatus.OK.value(), MessageResponse.MESSAGE_SUCCESS, courses);
     }
 }
