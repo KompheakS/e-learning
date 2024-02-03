@@ -26,10 +26,9 @@ public class Users {
     @Column(name = "U_PASSWORD")
     private String password;
     @Column(name = "U_EMAIL")
-    @Email
     private String email;
     @Column(name = "U_PHONE_NUMBER")
-    private int phoneNumber;
+    private String phoneNumber;
     @Column(name = "U_DATE_OF_BIRTH", columnDefinition = "DATE")
     private LocalDate dateOfBirth;
     @Column(name = "U_GENDER")
@@ -38,5 +37,5 @@ public class Users {
     @Column(name = "U_PHOTO")
     private byte[] photo;*/
     @Column(name = "U_JOIN_DATE")
-    private Timestamp joinDate;
+    private LocalDate joinDate;
 }

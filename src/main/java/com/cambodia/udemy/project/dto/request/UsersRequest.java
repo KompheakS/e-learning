@@ -1,6 +1,5 @@
 package com.cambodia.udemy.project.dto.request;
 
-import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.io.Serializable;
@@ -16,10 +15,8 @@ public class UsersRequest implements Serializable {
 
     private String username;
     private String password;
-    @Email
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
     private LocalDate dateOfBirth;
     private String gender;
-    private Timestamp joinDate;
 }

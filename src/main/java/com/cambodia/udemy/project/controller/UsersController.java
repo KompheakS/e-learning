@@ -5,10 +5,7 @@ import com.cambodia.udemy.project.service.imp.UserServiceImp;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -18,7 +15,11 @@ public class UsersController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createUser(@RequestBody UsersRequest userRequest){
-        System.out.println("Hello world");
         return new ResponseEntity<>(userService.createUser(userRequest), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/gets")
+    public ResponseEntity<?> getAllUsers(){
+        return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
     }
 }

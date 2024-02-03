@@ -40,5 +40,4 @@ class UdemyProjectApplicationTests {
 		// then
 		assertFalse(category.isEmpty());
 	}
-
 }
