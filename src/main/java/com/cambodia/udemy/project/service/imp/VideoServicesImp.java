@@ -24,12 +24,6 @@ import java.sql.Timestamp;
 import java.util.Optional;
 
 
-/*
-* Note:
-* - change video's request because it depends on the course table.
-* - and then implement on the service impl and controller.
-* */
-
 @Service
 @AllArgsConstructor
 @Slf4j

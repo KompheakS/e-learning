@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Columns;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -38,4 +39,8 @@ public class Users {
     private byte[] photo;*/
     @Column(name = "U_JOIN_DATE")
     private LocalDate joinDate;
+    @Column(name = "U_VERIFICATION_CODE")
+    private String verificationCode;
+    @Column(name = "U_IS_VERIFY")
+    private boolean isVerify;
 }

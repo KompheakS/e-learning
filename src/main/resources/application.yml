@@ -12,6 +12,17 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: kompheakkh10@gmail.com
+    password: udup xlil dnop mqmx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 # Specify the path of the OpenAPI documentation
 springdoc:
@@ -23,3 +34,5 @@ springdoc:
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
+
+# Config for smtp(email verification)
