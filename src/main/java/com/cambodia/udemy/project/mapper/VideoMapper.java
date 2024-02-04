@@ -5,6 +5,6 @@ import com.cambodia.udemy.project.entity.Video;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface VideoMapping {
+public interface VideoMapper {
     Video mapToVideo(VideoRequest videoRequest);
 }

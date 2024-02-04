@@ -29,8 +29,10 @@ public class Video {
     private Timestamp userCreated;
     @Column(name = "V_USER_MODIFIED")
     private Timestamp userModified;
-    @Column(name = "V_USER_ID")
-    private Long userId;
+
+    @ManyToOne
+    @JoinColumn(name = "V_USER_ID")
+    private Users users;
 
     @ManyToOne
     @JoinColumn(name = "V_COURSE_ID")
