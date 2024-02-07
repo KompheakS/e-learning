@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Columns;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -26,17 +27,20 @@ public class Users {
     @Column(name = "U_PASSWORD")
     private String password;
     @Column(name = "U_EMAIL")
-    @Email
     private String email;
     @Column(name = "U_PHONE_NUMBER")
-    private Long phoneNumber;
+    private String phoneNumber;
     @Column(name = "U_DATE_OF_BIRTH", columnDefinition = "DATE")
     private LocalDate dateOfBirth;
     @Column(name = "U_GENDER")
     private String gender;
-    @Lob
+    /*@Lob
     @Column(name = "U_PHOTO")
-    private byte[] photo;
+    private byte[] photo;*/
     @Column(name = "U_JOIN_DATE")
-    private Timestamp joinDate;
+    private LocalDate joinDate;
+    @Column(name = "U_VERIFICATION_CODE")
+    private String verificationCode;
+    @Column(name = "U_IS_VERIFY")
+    private boolean isVerify;
 }

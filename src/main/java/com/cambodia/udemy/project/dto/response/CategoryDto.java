@@ -1,4 +1,4 @@
-package com.cambodia.udemy.project.dto;
+package com.cambodia.udemy.project.dto.response;
 
 import lombok.Data;
 
