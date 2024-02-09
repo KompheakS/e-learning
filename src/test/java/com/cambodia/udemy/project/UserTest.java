@@ -2,6 +2,7 @@ package com.cambodia.udemy.project;
 
 import com.cambodia.udemy.project.dto.request.UsersRequest;
 import com.cambodia.udemy.project.entity.Users;
+import com.cambodia.udemy.project.mapper.UsersMapper;
 import com.cambodia.udemy.project.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
