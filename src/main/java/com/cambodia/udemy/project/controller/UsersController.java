@@ -1,7 +1,8 @@
 package com.cambodia.udemy.project.controller;
 
 import com.cambodia.udemy.project.dto.request.UsersRequest;
-import com.cambodia.udemy.project.service.imp.UserServiceImp;
+import com.cambodia.udemy.project.dto.request.VerifyRequest;
+import com.cambodia.udemy.project.service.UserServices;
 import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,15 +15,20 @@ import java.io.UnsupportedEncodingException;
 @AllArgsConstructor
 @RequestMapping("/users")
 public class UsersController {
-    private UserServiceImp userService;
+    private UserServices userService;
 
-    @PostMapping("/create")
-    public ResponseEntity<?> createUser(@RequestBody UsersRequest userRequest) throws MessagingException, UnsupportedEncodingException {
-        return new ResponseEntity<>(userService.createUser(userRequest), HttpStatus.CREATED);
+    @PostMapping("/register")
+    public ResponseEntity<?> userRegister(@RequestBody UsersRequest userRequest) throws MessagingException, UnsupportedEncodingException {
+        return new ResponseEntity<>(userService.userRegister(userRequest), HttpStatus.CREATED);
     }
 
-    @GetMapping("/gets")
-    public ResponseEntity<?> getAllUsers(){
+    @GetMapping("/views")
+    public ResponseEntity<?> viewAllUsers(){
         return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
+    }
+
+    @PostMapping("/verify")
+    public ResponseEntity<?> verifyEmail(@RequestBody VerifyRequest request){
+        return new ResponseEntity<>(userService.emailVerify(request), HttpStatus.OK);
     }
 }

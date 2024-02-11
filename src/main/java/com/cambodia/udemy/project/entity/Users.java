@@ -1,14 +1,11 @@
 package com.cambodia.udemy.project.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Columns;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Data
@@ -41,6 +38,6 @@ public class Users {
     private LocalDate joinDate;
     @Column(name = "U_VERIFICATION_CODE")
     private String verificationCode;
-    @Column(name = "U_IS_VERIFY")
-    private boolean isVerify;
+    @Column(name = "U_STATUS")
+    private String userStatus;
 }

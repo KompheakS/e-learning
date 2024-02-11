@@ -4,6 +4,8 @@ import com.cambodia.udemy.project.dto.request.UsersRequest;
 import com.cambodia.udemy.project.entity.Users;
 import com.cambodia.udemy.project.mapper.UsersMapper;
 import com.cambodia.udemy.project.repository.UserRepository;
+import com.cambodia.udemy.project.service.UserServices;
+import com.cambodia.udemy.project.service.imp.UserServiceImp;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,10 @@ public class UserTest {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserServices userServices;
+    @Autowired
+    private UserServiceImp userServiceImp;
     private final UsersMapper usersMapper = Mappers.getMapper(UsersMapper.class);
 
     @Test
@@ -45,5 +51,13 @@ public class UserTest {
     void testGetAllUsers(){
         // Given
 
+    }
+
+    @Test
+    void testPrintUUID() {
+        /*String uuidGenerate = userServiceImp.generateUUID();*/
+        UserServiceImp userServiceImp1 = new UserServiceImp();
+        String uuidGenerate = userServiceImp1.generateUUID();
+        System.out.println(uuidGenerate);
     }
 }
