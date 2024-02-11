@@ -1,6 +1,7 @@
 package com.cambodia.udemy.project.controller;
 
 import com.cambodia.udemy.project.dto.request.CourseRequest;
+import com.cambodia.udemy.project.dto.request.ViewCourseRequest;
 import com.cambodia.udemy.project.service.CourseServices;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,5 +23,10 @@ public class CourseController {
     @GetMapping("/views")
     public ResponseEntity<?> viewAllCourse(){
         return new ResponseEntity<>(courseServices.viewAllCourse(), HttpStatus.OK);
+    }
+
+    @PostMapping("/view/details")
+    public ResponseEntity<?> viewCourseDetail(@RequestBody ViewCourseRequest request){
+        return new ResponseEntity<>(courseServices.viewCourseDetails(request), HttpStatus.OK);
     }
 }

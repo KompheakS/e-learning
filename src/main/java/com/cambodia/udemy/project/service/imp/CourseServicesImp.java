@@ -1,15 +1,21 @@
 package com.cambodia.udemy.project.service.imp;
 
 import com.cambodia.udemy.project.dto.request.CourseRequest;
+import com.cambodia.udemy.project.dto.request.ViewCourseRequest;
 import com.cambodia.udemy.project.dto.response.ApiResponse;
+import com.cambodia.udemy.project.dto.response.VideoResponse;
+import com.cambodia.udemy.project.dto.response.ViewCourseResponse;
 import com.cambodia.udemy.project.entity.Category;
 import com.cambodia.udemy.project.entity.Courses;
 import com.cambodia.udemy.project.entity.Users;
+import com.cambodia.udemy.project.entity.Video;
 import com.cambodia.udemy.project.exception.CustomBadRequestException;
 import com.cambodia.udemy.project.mapper.CourseMapper;
+import com.cambodia.udemy.project.mapper.manual.VideoMapperImp;
 import com.cambodia.udemy.project.repository.CategoryRepository;
 import com.cambodia.udemy.project.repository.CourseRepository;
 import com.cambodia.udemy.project.repository.UserRepository;
+import com.cambodia.udemy.project.repository.VideoRepository;
 import com.cambodia.udemy.project.service.CourseServices;
 import com.cambodia.udemy.project.utils.MessageResponse;
 import lombok.AllArgsConstructor;
@@ -20,6 +26,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -30,6 +37,7 @@ public class CourseServicesImp implements CourseServices {
     private final CourseRepository courseRepository;
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
+    private final VideoRepository videoRepository;
 
     @Override
     public ApiResponse<String> createCourse(CourseRequest courseRequest) {
@@ -54,5 +62,27 @@ public class CourseServicesImp implements CourseServices {
         List<Courses> courses = courseRepository.findAll();
         log.info("get all course success!");
         return new ApiResponse<>(HttpStatus.OK.value(), MessageResponse.MESSAGE_SUCCESS, courses);
+    }
+
+    @Override
+    public ApiResponse<?> viewCourseDetails(ViewCourseRequest request) {
+        Optional<Courses> getCourse = courseRepository.findByCourseName(request.getCourseName());
+
+        if (getCourse.isEmpty()){
+            log.warn("invalid course!");
+            throw new CustomBadRequestException("cannot find this course!");
+        }
+
+        Courses courses = getCourse.get();
+
+        List<Video> getVideo = videoRepository.findAllByCoursesId(courses.getId());
+        List<VideoResponse> videoResponses = getVideo.stream()
+                .map(VideoMapperImp::mapToVideoResponse)
+                .collect(Collectors.toList());
+        ViewCourseResponse response = new ViewCourseResponse();
+        response.setVideoResponse(videoResponses);
+        response.setCourseName(courses.getCourseName());
+
+        return new ApiResponse<>(HttpStatus.OK.value(), MessageResponse.MESSAGE_SUCCESS, response);
     }
 }
