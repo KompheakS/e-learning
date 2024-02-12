@@ -52,6 +52,7 @@ public class CourseServicesImp implements CourseServices {
         course.setCourseName(courseRequest.getCourseName());
         course.setCategory(getCategoryFromDb.get());
         course.setUserId(getUserFromDb.get());
+
         courseRepository.save(course);
         log.info("new course has been created with name {}", course.getCourseName());
         return new ApiResponse<>(HttpStatus.CREATED.value(), MessageResponse.MESSAGE_SUCCESS, MessageResponse.MESSAGE_SUCCESS);
@@ -79,6 +80,7 @@ public class CourseServicesImp implements CourseServices {
         List<VideoResponse> videoResponses = getVideo.stream()
                 .map(VideoMapperImp::mapToVideoResponse)
                 .collect(Collectors.toList());
+
         ViewCourseResponse response = new ViewCourseResponse();
         response.setVideoResponse(videoResponses);
         response.setCourseName(courses.getCourseName());
